@@ -9,7 +9,6 @@ import streamlit as st
 import numpy as np
 #Importing pyplot to make the plots
 import matplotlib.pyplot as plt
-from math import floor
 
 #Best tutorial: https://www.youtube.com/watch?v=Sb0A9i6d320 Turn An Excel Sheet Into An Interactive Dashboard Using Python (Streamlit)
 
@@ -55,12 +54,14 @@ signalFrequency = st.slider("Frequency of Signal (Hz)", -10, 10, 5, 1)
 samplingFrequency = st.slider("Sampling Frequency (Hz)", 1, 10, 5, 1)
 
 Fa = signalFrequency/samplingFrequency
+print(Fa)
 if (Fa > 0):
     Fa -= int(Fa+0.5)
 else:
     Fa -= int(Fa-0.5)
 if (Fa == 0.5 or Fa == -0.5):
     Fa = 0
+print(Fa)
 reconstructedFrequency = Fa * samplingFrequency
 
 signalWave = GenerateSineWave("Signal", 1, signalFrequency, 2)
